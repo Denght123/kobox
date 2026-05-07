@@ -10,6 +10,14 @@ const { t } = useI18n()
       <a href="mailto:3403666426@qq.com">{{ t('footer.contact') }} 3403666426@qq.com</a>
       <a href="#">{{ t('footer.terms') }}</a>
       <a href="#">{{ t('footer.privacy') }}</a>
+      <a
+        class="beian-link"
+        href="https://beian.miit.gov.cn/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        蜀ICP备2026009239号-3
+      </a>
     </div>
     <p class="copyright">{{ t('footer.copyright') }}</p>
   </footer>
@@ -33,5 +41,10 @@ const { t } = useI18n()
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 10px;
+}
+
+.beian-link {
+  letter-spacing: 0.06em;
+  text-transform: none;
 }
 </style>
