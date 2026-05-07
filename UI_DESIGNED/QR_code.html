@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kobox 小匣子 - 个人收藏分享</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#a3e3fd",
+                        "surface": "#fbf5f1",
+                        "secondary-dim": "#624568",
+                        "on-surface": "#302e2c",
+                        "on-surface-variant": "#5e5b58",
+                        "surface-tint": "#834b58",
+                        "surface-bright": "#fbf5f1",
+                        "tertiary": "#1a6379",
+                        "surface-container": "#ede7e3",
+                        "outline": "#7a7673",
+                        "on-background": "#302e2c",
+                        "on-primary-fixed": "#4d1f2b",
+                        "surface-container-high": "#e7e1dd",
+                        "primary-fixed": "#feb6c4",
+                        "on-primary-fixed-variant": "#703b47",
+                        "on-error-container": "#570008",
+                        "secondary": "#6f5174",
+                        "on-secondary": "#ffeefd",
+                        "surface-variant": "#e2dcd7",
+                        "primary-dim": "#75404c",
+                        "on-secondary-fixed-variant": "#6d4f72",
+                        "on-secondary-fixed": "#4f3455",
+                        "on-error": "#ffefee",
+                        "surface-dim": "#d9d3ce",
+                        "tertiary-fixed-dim": "#95d5ee",
+                        "inverse-primary": "#feb6c4",
+                        "surface-container-low": "#f6f0eb",
+                        "on-primary-container": "#65323e",
+                        "secondary-fixed-dim": "#ebc5ef",
+                        "secondary-fixed": "#fad3fd",
+                        "primary": "#834b58",
+                        "on-primary": "#ffeff0",
+                        "secondary-container": "#fad3fd",
+                        "on-tertiary-fixed": "#004050",
+                        "on-tertiary-container": "#005469",
+                        "tertiary-dim": "#00576c",
+                        "inverse-surface": "#0f0e0c",
+                        "outline-variant": "#b1aca9",
+                        "error-dim": "#9f0519",
+                        "background": "#fbf5f1",
+                        "error": "#b31b25",
+                        "primary-fixed-dim": "#efa9b6",
+                        "surface-container-highest": "#e2dcd7",
+                        "on-tertiary-fixed-variant": "#105e73",
+                        "tertiary-container": "#a3e3fd",
+                        "error-container": "#fb5151",
+                        "on-tertiary": "#e2f6ff",
+                        "on-secondary-container": "#634668",
+                        "inverse-on-surface": "#a09c99",
+                        "primary-container": "#feb6c4",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .water-surface {
+            background: linear-gradient(135deg, #fbf5f1 0%, #feb6c4 40%, #fad3fd 70%, #a3e3fd 100%);
+            background-size: 400% 400%;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .sticker-rotate-left {
+            transform: rotate(-2deg);
+        }
+
+        .sticker-rotate-right {
+            transform: rotate(3deg);
+        }
+
+        .floating-card {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .floating-card:hover {
+            transform: translateY(-8px) rotate(1deg);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface font-body text-on-surface antialiased min-h-screen flex justify-center items-start py-12 px-4 overflow-x-hidden">
+    <!-- Canvas Wrapper (Social Share Card Format) -->
+    <main
+        class="relative w-full max-w-[480px] bg-white rounded-xl shadow-[0_40px_100px_-20px_rgba(48,46,44,0.12)] overflow-hidden flex flex-col items-center">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="water-surface absolute inset-0 opacity-40"></div>
+            <!-- Floating Orbs -->
+            <div
+                class="absolute top-[10%] -left-20 w-64 h-64 bg-tertiary-fixed-dim rounded-full blur-[80px] opacity-30">
+            </div>
+            <div
+                class="absolute bottom-[20%] -right-20 w-80 h-80 bg-primary-fixed rounded-full blur-[100px] opacity-25">
+            </div>
+            <!-- Sakura Petals (Decorative SVGs) -->
+            <div class="absolute top-20 right-10 text-primary-fixed/40 rotate-45">
+                <span class="material-symbols-outlined text-4xl">filter_vintage</span>
+            </div>
+            <div class="absolute top-60 left-4 text-secondary-fixed/40 -rotate-12">
+                <span class="material-symbols-outlined text-2xl">filter_vintage</span>
+            </div>
+            <div class="absolute bottom-40 right-12 text-tertiary-fixed/30 rotate-180">
+                <span class="material-symbols-outlined text-3xl">filter_vintage</span>
+            </div>
+        </div>
+        <!-- Header / Navigation (Suppressed per Shell Visibility Rule for specific content page) -->
+        <!-- Top Profile Section -->
+        <header class="relative z-10 w-full pt-16 pb-8 px-10 flex flex-col items-center text-center">
+            <div class="relative mb-6">
+                <!-- Outer Glow -->
+                <div class="absolute inset-0 bg-primary-container rounded-full blur-2xl opacity-40 animate-pulse"></div>
+                <!-- Avatar -->
+                <div class="relative w-28 h-28 rounded-full border-4 border-white shadow-lg overflow-hidden">
+                    <img alt="User Avatar" class="w-full h-full object-cover"
+                        data-alt="Dreamy anime style portrait of a young boy with silver hair in soft pastel lighting with sparkles"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9-kKcKqnowdrmkGXLrUdbV9VhQ7v3qO_6JjiFYzF_HHzbncu8AQfYOHCLmCjImXVtXetphVvIid6g0GWdcDAbcFQH04huehcMn2-WJo7VxrveBWz35niFz2PWkB-2drxGyeoAJ214U6a5-UnfE7c6F8piQrlc38lrzgtIwcX3dcdPpymdAT844-WBb98c0oxmLcSLSVzeRHLkHcsML6wEZ-j5HgGB8ne5wiEOg7LV1dQdg-ShRzjNZ0zBpUKxTwSE3K_rVEA34io" />
+                </div>
+                <!-- Mini Sticker -->
+                <div
+                    class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-label font-bold shadow-sm tracking-widest uppercase">
+                    PRO
+                </div>
+            </div>
+            <h1 class="font-headline text-3xl font-extrabold text-on-surface tracking-tighter mb-2">追番狂人A</h1>
+            <p class="font-body text-on-surface-variant text-sm leading-relaxed max-w-[240px]">
+                在梦境中编织次元碎片
+            </p>
+            <div class="mt-6 flex gap-3">
+                <div
+                    class="bg-surface-container-low px-4 py-1 rounded-full text-xs font-label text-on-surface-variant flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span> 资深收藏家
+                </div>
+                <div
+                    class="bg-surface-container-low px-4 py-1 rounded-full text-xs font-label text-on-surface-variant flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">favorite</span> 248 收藏
+                </div>
+            </div>
+        </header>
+        <!-- Collage Wall Section -->
+        <section class="relative z-10 w-full px-8 py-4">
+            <div class="flex items-center justify-between mb-6 px-2">
+                <h2 class="font-headline text-lg font-bold text-on-surface">已完结收藏</h2>
+                <div class="h-[1px] flex-grow mx-4 bg-outline-variant/20"></div>
+                <span class="font-label text-[10px] uppercase tracking-widest text-primary-dim">Completed</span>
+            </div>
+            <!-- Bento Grid / Asymmetric Layout -->
+            <div class="grid grid-cols-6 grid-rows-6 gap-3 h-[520px]">
+                <!-- Large Feature Card -->
+                <div
+                    class="col-span-4 row-span-3 floating-card bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm group">
+                    <img alt="Anime Cover 1" class="w-full h-full object-cover"
+                        data-alt="Cinematic anime style scenery of a futuristic city with neon lights and soft pink cherry blossoms in the rain"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp4NwgP6Dfaud73v0bjIKOucwjHyxUFtukHRZC6TCIQoSNJqtgXCTXCpAwI2Zm9f2BK26vUphBl7OdniASjd_XU3rXNmoVeOryGPiol8hfqZoPcB_NoDkJOcz9vgu2IW9mGhKo-dEKI_X81333PVCzrbnGo_CmLTKIEEJOu1NEzZhRfooMcm-xpofF7vH5mhop5ykXnt2paOGPrr1al2bY0c2BYVSzzVfFQhNyEaGBr8IBrNxFAd2-8WZHk1cZk_64vEN9HBuRaOQ" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                        <span class="text-white text-xs font-medium">命运石之门</span>
+                    </div>
+                </div>
+                <!-- Tall Card -->
+                <div
+                    class="col-span-2 row-span-4 floating-card bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm sticker-rotate-right">
+                    <img alt="Anime Cover 2" class="w-full h-full object-cover"
+                        data-alt="Ethereal anime artwork of a starry night sky over a quiet ocean with a small rowboat"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkfvdcFqN7o_6g5FqmeR39g-EE6D7f6JDMrmdTIRAVmoUYSnf1QBGhjy3pJyq6tjNJiS4WrLcVeGzNKNjdkk7CHG_pvnimk6WaFg8K7CYpviE4UuICwa0pZTEFfkTybi9AX0KgJAnXAjjWM7k8MOKqZtIKldTAo9sUupAbCSdIT11XD8zdfb7QT8i-BmWgk0FFsq1jr8YL_YSGwlVq8gDOSQnUkEcncwTlWYmjs6gxWYe7Fbzglf2zMsBtG0Bvpq1n2hfECsN4PIY" />
+                </div>
+                <!-- Small Square -->
+                <div
+                    class="col-span-2 row-span-2 floating-card bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm sticker-rotate-left">
+                    <img alt="Anime Cover 3" class="w-full h-full object-cover"
+                        data-alt="Japanese traditional street at sunset in anime illustration style with warm golden lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Eb44e34l1dt6h5-BvOI3vvQTICeR-FjNEBRWYMmz3yDeg1UweCWppcBaDlDOZcEKl5pgr2R4684-MsbBbQzDMWcVMZ9wNhbGj2JeeUvAxyS55KVxfYECIqHfNqpzqoeXqBjCPkyV0m9mgCS68qY3Ah22ekEdKsXCE66EIK6_NyMG-YHJoqWeBquQD_6zU82xT2QHwx2_WHszDUTvgOiwSVEN9660jX7sgN8zUviE1AP-Bcbj0WX-qC-bXf1mmmyzpTulzocy2cI" />
+                </div>
+                <!-- Horizontal Card -->
+                <div
+                    class="col-span-4 row-span-2 floating-card bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm">
+                    <img alt="Anime Cover 4" class="w-full h-full object-cover"
+                        data-alt="Aesthetic interior of a cozy anime room with lots of plants and sunlight streaming through the window"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBWsjmxbaqTNSlcrLZdxOj6_4dRiBFQU01ilhKUuZNJ264N6M_fo6-0wcRZE1nmbf8zYgFU7J-gGe6WW87TDLjAQ4JbSAjEHvQqUXH_zfaDD0BiO5_V0E9lKXZufTj9gSzTz0gV-7YM2IzVte_t6CRXa9bXWY6EwcZLt0Vq52DAMPCe_8HTuyXmg_4kPCvsfGufjFdRZQIF1mazVkP-o-bWidwsg_vMW-IMSL4GSYhX6tgFWSzSZhu4W9ZFhxAo7wQiXntg-_G98s" />
+                </div>
+                <!-- Bottom Square -->
+                <div
+                    class="col-span-2 row-span-1 floating-card bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm">
+                    <img alt="Anime Cover 5" class="w-full h-full object-cover"
+                        data-alt="Soft abstract pink and purple clouds with a painterly texture for anime background"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZTA6N04l0KMqPmdHeQCHrgYpsbDp1qfzQZ_jmNpbkRaJAVVwhrOr6F0Lm5mWV3LXOnD4CmhcsvAUh_2e4qj1A0andTLqpp9cXYqv9ZFMNbN5Z8tCFyYbDkDDDzMK9hk6U9JPsFYNIrieQXjifzyT3bG6rVUf5xDfP65SuH-wcaEPRkfu-ag8VcquuqQGikrKaIbDVgOqoR7DBTKJX_gEiGXHnF4JHAxb348YhGGt37wT9WQY1NQm4HjmGgGbjEAzobuR0XrThlAo" />
+                </div>
+            </div>
+        </section>
+        <!-- QR Code & Footer Share Area -->
+        <footer class="relative z-10 w-full mt-8 mb-12 flex flex-col items-center">
+            <!-- Decorative Separator -->
+            <div class="w-16 h-1 bg-primary-fixed-dim rounded-full mb-8"></div>
+            <div
+                class="glass-panel p-6 rounded-xl flex flex-col items-center gap-4 w-[280px] shadow-lg border border-white/40">
+                <div class="p-3 bg-white rounded-lg shadow-inner">
+                    <!-- Placeholder QR Code Representation -->
+                    <div class="w-32 h-32 bg-on-surface-variant/5 rounded-md flex items-center justify-center relative">
+                        <span class="material-symbols-outlined text-slate-300 text-6xl">qr_code_2</span>
+                        <div class="absolute inset-0 border-[8px] border-white pointer-events-none"></div>
+                        <!-- Logo in middle of QR -->
+                        <div class="absolute bg-white p-1 rounded-md">
+                            <span class="material-symbols-outlined text-rose-500 text-xl font-bold">package_2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <p class="font-headline text-sm font-bold text-on-surface tracking-tight">扫码访问我的次元展柜</p>
+                    <p class="font-label text-[10px] text-on-surface-variant mt-1 uppercase tracking-widest">Scan to
+                        explore Kobox</p>
+                </div>
+            </div>
+            <!-- Platform Branding -->
+            <div class="mt-10 flex flex-col items-center">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="material-symbols-outlined text-rose-500 text-lg">box</span>
+                    <span class="font-headline font-extrabold text-rose-500 tracking-tighter text-xl">Kobox (小匣子)</span>
+                </div>
+                <p class="font-label text-[9px] uppercase tracking-[0.3em] text-slate-400">© 2024 DREAMY ACG CURATION
+                </p>
+            </div>
+        </footer>
+        <!-- Random Floating Orbs / Particles for extra depth -->
+        <div
+            class="absolute bottom-10 left-10 w-4 h-4 bg-tertiary-fixed rounded-full blur-[2px] opacity-40 pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/2 right-4 w-6 h-6 bg-primary-fixed-dim rounded-full blur-[3px] opacity-30 pointer-events-none">
+        </div>
+        <div class="absolute top-1/4 left-12 w-2 h-2 bg-white rounded-full blur-[1px] opacity-60 pointer-events-none">
+        </div>
+    </main>
+    <!-- Side Decoration (Web Only) -->
+    <div class="hidden lg:flex fixed left-12 bottom-12 flex-col gap-6 text-primary/40">
+        <div class="flex flex-col gap-2">
+            <span class="material-symbols-outlined text-3xl">water_drop</span>
+            <div class="w-[1px] h-32 bg-gradient-to-b from-primary/40 to-transparent mx-auto"></div>
+        </div>
+        <p class="font-label text-[10px] uppercase vertical-text tracking-[0.5em] [writing-mode:vertical-rl]">Ethereal
+            Sanctuary</p>
+    </div>
+</body>
+
+</html>

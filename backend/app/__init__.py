@@ -1,0 +1,2 @@
+"""Kobox backend application package."""
+

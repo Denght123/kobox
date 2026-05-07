@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kobox (小匣子) - 编辑我的心头好</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#004050",
+                        "outline": "#7a7673",
+                        "secondary-fixed": "#fad3fd",
+                        "on-secondary": "#ffeefd",
+                        "primary-dim": "#75404c",
+                        "surface-bright": "#fbf5f1",
+                        "tertiary-dim": "#00576c",
+                        "inverse-surface": "#0f0e0c",
+                        "secondary-container": "#fad3fd",
+                        "on-primary-fixed": "#4d1f2b",
+                        "on-secondary-fixed-variant": "#6d4f72",
+                        "on-primary-container": "#65323e",
+                        "surface-container": "#ede7e3",
+                        "on-error": "#ffefee",
+                        "tertiary": "#1a6379",
+                        "inverse-on-surface": "#a09c99",
+                        "secondary-dim": "#624568",
+                        "on-tertiary": "#e2f6ff",
+                        "on-surface-variant": "#5e5b58",
+                        "surface-container-low": "#f6f0eb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-dim": "#9f0519",
+                        "on-surface": "#302e2c",
+                        "primary-fixed": "#feb6c4",
+                        "secondary-fixed-dim": "#ebc5ef",
+                        "on-primary-fixed-variant": "#703b47",
+                        "on-tertiary-container": "#005469",
+                        "error": "#b31b25",
+                        "on-secondary-container": "#634668",
+                        "on-background": "#302e2c",
+                        "primary-fixed-dim": "#efa9b6",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed-variant": "#105e73",
+                        "surface-dim": "#d9d3ce",
+                        "surface-container-high": "#e7e1dd",
+                        "on-error-container": "#570008",
+                        "outline-variant": "#b1aca9",
+                        "primary-container": "#feb6c4",
+                        "surface-tint": "#834b58",
+                        "background": "#fbf5f1",
+                        "secondary": "#6f5174",
+                        "on-primary": "#ffeff0",
+                        "surface": "#fbf5f1",
+                        "tertiary-fixed": "#a3e3fd",
+                        "primary": "#834b58",
+                        "on-secondary-fixed": "#4f3455",
+                        "inverse-primary": "#feb6c4",
+                        "surface-container-highest": "#e2dcd7",
+                        "tertiary-container": "#a3e3fd",
+                        "surface-variant": "#e2dcd7",
+                        "tertiary-fixed-dim": "#95d5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: #fbf5f1;
+            color: #302e2c;
+        }
+
+        .glass-panel {
+            background: rgba(251, 245, 241, 0.6);
+            backdrop-filter: blur(20px);
+        }
+
+        .floating-orb {
+            position: fixed;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+
+        .tonal-shift {
+            background-color: #f6f0eb;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Decorative Floating Orbs -->
+    <div class="floating-orb w-96 h-96 bg-tertiary-fixed top-[-10%] left-[-5%]"></div>
+    <div class="floating-orb w-[500px] h-[500px] bg-primary-fixed bottom-[-10%] right-[-5%]"></div>
+    <!-- TopNavBar -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center px-8 py-3 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-5xl tonal-shift shadow-sm shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+        <div class="text-2xl font-bold text-rose-500 dark:text-rose-400 tracking-tighter font-['Epilogue']">Kobox (小匣子)
+        </div>
+        <nav class="hidden md:flex gap-8 items-center">
+            <a class="font-['Epilogue'] text-sm font-medium tracking-wide text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors"
+                href="#">我的展柜</a>
+            <a class="font-['Epilogue'] text-sm font-medium tracking-wide text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors"
+                href="#">搜索添加</a>
+            <a class="font-['Epilogue'] text-sm font-medium tracking-wide text-rose-600 dark:text-rose-300 border-b-2 border-rose-400 pb-1"
+                href="#">喜欢榜</a>
+            <a class="font-['Epilogue'] text-sm font-medium tracking-wide text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors"
+                href="#">个人设置</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <span
+                class="material-symbols-outlined text-rose-400 cursor-pointer p-2 hover:bg-rose-50/50 rounded-full transition-all">qr_code_2</span>
+            <img alt="User Avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-rose-200"
+                data-alt="stylized anime portrait of a young person with soft pastel lighting and artistic brushwork"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYSRDcZ01y6O_VleEr2ctXsuDcO53qA32rNa848bw5Q1MAvdLVWqGt1O9KQWt-53ytY4A3TKxg4vD4YverRQOt1Fm8_uubESkfgDR8vdSNKFvSMKatlt9L19MHE1FxhBbYfAuOENjNZ56wZ9r7pzmacCmAaWgex0lY_-6yB89QysZOqVJBQTnTdcSb6YQVsJZhDQyyvLF4L2g5HZl0Pyd-TP8g8nW_utCt4X9KoAkwlTlgd0brSfg6gxlrMDIIlU1ilRCp-25Omr8" />
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 py-12 lg:flex lg:gap-12">
+        <!-- Sidebar Shell (SideNavBar Mapping) -->
+        <aside class="hidden lg:flex flex-col w-72 shrink-0">
+            <div
+                class="bg-[#fbf5f1]/80 backdrop-blur-2xl rounded-xl p-8 sticky top-32 shadow-[40px_0_60px_-15px_rgba(48,46,44,0.05)]">
+                <div class="flex items-center gap-4 mb-8">
+                    <img alt="User character portrait" class="w-14 h-14 rounded-2xl object-cover"
+                        data-alt="vibrant character illustration with warm aesthetic and soft background"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDskhPQSLPUFsQr_1hDUNlW6NcdkRboFQEyXACjba2FIA3yR0hbUfLrGOed6GCsztUVM3A7mbJzY4PIRyZOL7H6QCoUO4D56Td66N4I1ZrzYqEXKN8rAGD3vxD8gmpXnOzWe0VdK70abE3XPO4UAnFwLquPZQhM098gFDdn5J-zTOZSSKoaISZQYFcBUhhuN63zPNDtZmNhG-I_rJHScYEYd30qKwpEKb7E_9CxxjTLps3XNjKeG5_kmTUsAJnMxTQ44qk0rAlC2_U" />
+                    <div>
+                        <h3 class="text-rose-500 font-bold font-headline">小匣子收藏家</h3>
+                        <p class="text-[10px] text-on-surface-variant font-label uppercase tracking-widest mt-1">梦境收藏家
+                        </p>
+                    </div>
+                </div>
+                <nav class="flex flex-col gap-2 mb-12">
+                    <button
+                        class="flex items-center gap-4 p-4 text-slate-500 hover:translate-x-1 transition-transform group">
+                        <span class="material-symbols-outlined">grid_view</span>
+                        <span class="font-medium text-sm">我的展柜</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 p-4 text-slate-500 hover:translate-x-1 transition-transform group">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        <span class="font-medium text-sm">搜索添加</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 p-4 bg-rose-100/50 text-rose-600 rounded-2xl transition-all rotate-1">
+                        <span class="material-symbols-outlined"
+                            style="font-variation-settings: 'FILL' 1;">favorite</span>
+                        <span class="font-medium text-sm">喜欢榜</span>
+                    </button>
+                    <button
+                        class="flex items-center gap-4 p-4 text-slate-500 hover:translate-x-1 transition-transform group">
+                        <span class="material-symbols-outlined">settings</span>
+                        <span class="font-medium text-sm">个人设置</span>
+                    </button>
+                </nav>
+                <button
+                    class="w-full py-4 bg-primary-container text-on-primary-container rounded-full font-bold text-sm hover:opacity-90 transition-all">
+                    分享收藏
+                </button>
+            </div>
+        </aside>
+        <!-- Main Content Canvas -->
+        <section class="flex-1">
+            <!-- Header Section -->
+            <div class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <h1 class="text-5xl font-headline font-extrabold text-on-surface tracking-tighter mb-2">编辑我的心头好</h1>
+                    <p class="text-on-surface-variant text-lg font-light leading-relaxed">排名调整：拖动或重新排序你的至臻藏品</p>
+                </div>
+                <div class="flex gap-4">
+                    <button
+                        class="px-8 py-3 bg-surface-container-lowest text-on-surface rounded-full text-sm font-semibold hover:bg-primary-fixed-dim/20 transition-all border border-outline-variant/20">
+                        放弃修改
+                    </button>
+                    <button
+                        class="px-8 py-3 bg-primary text-on-primary rounded-full text-sm font-bold shadow-lg shadow-primary/10 hover:scale-105 transition-all">
+                        保存公示
+                    </button>
+                </div>
+            </div>
+            <!-- Bento Grid Layout for Management -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <!-- Hall of Fame Reordering List -->
+                <div class="md:col-span-7 flex flex-col gap-6">
+                    <!-- Top 1 - Featured Hero Card -->
+                    <div
+                        class="group relative bg-surface-container-lowest rounded-xl overflow-hidden p-6 flex gap-6 items-center border border-outline-variant/10 hover:rotate-1 transition-all duration-500">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-soft-gold opacity-10 rounded-full blur-2xl">
+                        </div>
+                        <div class="shrink-0 relative">
+                            <div
+                                class="absolute -top-2 -left-2 bg-rose-500 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 shadow-lg">
+                                TOP 1</div>
+                            <img alt="Anime Cover 1"
+                                class="w-32 h-44 object-cover rounded-lg shadow-xl shadow-on-surface/5"
+                                data-alt="high-quality anime poster illustration featuring a cinematic sky and ethereal character details in soft lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-Ll4B-Sww8wiRhuAHweyWRE_q0Zh5V27d5lrKr1I5TprD6P3xTKVN4moSxovvzW1wmyyiRafygCcw70R7uXCzanS7wNWCioYPi81eH1PJbkK2UBc65-NIaQcF11s-EDjzn81w3_N8rTvID8qN8_mc18I5pX6D4egKQkjTUMmo_lyX8HeRyv8hGYtKB55bpckzFa8GKVdTH9gn6Vbxiw8Nyu1N-RolXrlodEeMdG2ER7nUElSmt6AfJIM-eGuCQGmObBds80X7dLg" />
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-headline font-bold text-on-surface mb-2">境界的彼方</h3>
+                            <p class="text-sm text-on-surface-variant line-clamp-2 mb-4 font-light">
+                                在异界士与妖梦共存的世界中，少年与眼镜少女的宿命邂逅。</p>
+                            <div class="flex gap-2">
+                                <span
+                                    class="px-3 py-1 bg-secondary-container/30 text-on-secondary-container text-[10px] font-label rounded-full">#京阿尼</span>
+                                <span
+                                    class="px-3 py-1 bg-secondary-container/30 text-on-secondary-container text-[10px] font-label rounded-full">#奇幻</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="p-2 hover:bg-surface-container-low rounded-full transition-colors text-outline">
+                                <span class="material-symbols-outlined">drag_handle</span>
+                            </button>
+                            <button class="p-2 hover:bg-rose-50 rounded-full transition-colors text-rose-400">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Top 2-5 Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Top 2 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center group hover:-rotate-1 transition-all duration-500">
+                            <div class="relative shrink-0">
+                                <div
+                                    class="absolute -top-1 -left-1 bg-rose-400 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10 shadow-md">
+                                    TOP 2</div>
+                                <img alt="Anime Cover 2" class="w-20 h-28 object-cover rounded-md"
+                                    data-alt="aesthetic anime scenery with dramatic sunset clouds and electric power lines in a nostalgic urban setting"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHrWEPFbqjyzH-D8iASbFOWSxYM5vBubkev5XiKCFd6fZ_DEayixuajynTHLrSdxbO_WCi8TjrxVjzVpFlEJjaFD_f6gtXOZCM0z-okzXtIxkhP5vnraU9BD5-QOSCF31ZuyWWKYgPXXrcY3MxYhwLjjnahm16ggFKUfXoMlKRleAl6XU0Wd_9tMJWn9KyO_DbY6mgZ_p0-jRCn7iCAyVz3Xx8c7iwErFaUqx1hFp2qHhmdhNfmVYhlIGexTCWT1syQijNFq7wdfE" />
+                            </div>
+                            <div class="overflow-hidden">
+                                <h4 class="font-headline font-bold text-on-surface truncate">莉可丽丝</h4>
+                                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2022 夏 ·
+                                    原创</p>
+                                <button
+                                    class="mt-3 flex items-center text-xs text-rose-400 font-semibold group-hover:translate-x-1 transition-transform">
+                                    <span class="material-symbols-outlined text-sm mr-1">drag_indicator</span> 调整
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Top 3 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center group hover:rotate-1 transition-all duration-500">
+                            <div class="relative shrink-0">
+                                <div
+                                    class="absolute -top-1 -left-1 bg-rose-300 text-white text-[9px] font-bold px-2 py-0.5 rounded-full z-10 shadow-md">
+                                    TOP 3</div>
+                                <img alt="Anime Cover 3" class="w-20 h-28 object-cover rounded-md"
+                                    data-alt="vibrant neon Tokyo street scene with rain reflections and glowing signage in anime style"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwhO1459vWBb24rxNqyo6sDK-qBba_oSCmnGYQmzGCO96BsYIamXI356GseErzYppp7hIkE7kqERZ_s3McYlG4IsxPR0R5_sQiRsLxZwkz1D6PC7GyQxmP7kHJQJqb1b3NE-wV7A9253nUBKYkOmQfY3vaar9QlCjOQS1wSvyHE7hLtVffgSjS7VXnMN5BxP_X8BljDk5ZaMpfAtgdgaqDSLmPy70sUJmMEy70aDD9q5bipY4hBotJhP3J1CyN4fL8UhWfKInyEtY" />
+                            </div>
+                            <div class="overflow-hidden">
+                                <h4 class="font-headline font-bold text-on-surface truncate">紫罗兰永恒花园</h4>
+                                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2018 冬 ·
+                                    催泪</p>
+                                <button
+                                    class="mt-3 flex items-center text-xs text-rose-400 font-semibold group-hover:translate-x-1 transition-transform">
+                                    <span class="material-symbols-outlined text-sm mr-1">drag_indicator</span> 调整
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Top 4 -->
+                        <div
+                            class="bg-surface-container-lowest rounded-xl p-4 flex gap-4 items-center group hover:rotate-1 transition-all duration-500">
+                            <div class="relative shrink-0">
+                                <div
+                                    class="absolute -top-1 -left-1 bg-slate-300 text-on-surface text-[9px] font-bold px-2 py-0.5 rounded-full z-10 shadow-md">
+                                    TOP 4</div>
+                                <img alt="Anime Cover 4" class="w-20 h-28 object-cover rounded-md"
+                                    data-alt="detailed drawing of a cozy anime study room with plants, books, and soft morning sunlight"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBauRy6eUMQwzcAIp_y6kKD02hs79fR-9XLL5zxpMmM63QEQWRwvCTCxaQFxkEsxJ6A1oO7-A-PVqgEnPvQjyCO_jp577Cv1u_j8ZjocEBC1028go6xRtwreV_1SB0w_9R15doDhhoCKT07fxyUBNChzWg37ptSDciLD9IsI_xHpdeupqrwpr-Pue87mUbO-LbhNDLLFc8wSHQ5UMNyQt8c94i3-Cbs4WpnaYKbegEbxGXb7bE4Ml7Xgpf0t-379SJ4DZlAX6kkE7M" />
+                            </div>
+                            <div class="overflow-hidden">
+                                <h4 class="font-headline font-bold text-on-surface truncate">孤独摇滚!</h4>
+                                <p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">2022 秋 ·
+                                    乐队</p>
+                                <button
+                                    class="mt-3 flex items-center text-xs text-rose-400 font-semibold group-hover:translate-x-1 transition-transform">
+                                    <span class="material-symbols-outlined text-sm mr-1">drag_indicator</span> 调整
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Add New Empty Slot -->
+                        <div
+                            class="bg-surface-container-low rounded-xl p-4 flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 group cursor-pointer hover:border-rose-300 transition-all">
+                            <span
+                                class="material-symbols-outlined text-3xl text-outline-variant group-hover:text-rose-300 transition-colors">add_circle</span>
+                            <span
+                                class="text-[10px] font-label text-outline-variant mt-2 uppercase tracking-widest group-hover:text-rose-400">添加至心头好</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Live Preview Widget -->
+                <div class="md:col-span-5 sticky top-32">
+                    <div
+                        class="bg-white/40 glass-panel rounded-xl p-1 shadow-2xl overflow-hidden border border-white/40">
+                        <div class="bg-surface-container-lowest px-4 py-3 flex items-center justify-between">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-rose-200"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-secondary-fixed"></div>
+                            </div>
+                            <span
+                                class="text-[9px] font-label tracking-widest text-on-surface-variant uppercase opacity-50 italic">实时首页预览</span>
+                        </div>
+                        <div class="p-8 bg-surface">
+                            <h4
+                                class="text-xl font-headline font-extrabold text-on-surface mb-6 flex items-center gap-3">
+                                <span class="w-2 h-8 bg-rose-400 rounded-full"></span>
+                                我的本命榜单
+                            </h4>
+                            <!-- Mini Grid Preview -->
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 bg-white p-2 rounded-lg shadow-sm">
+                                    <div
+                                        class="w-10 h-10 bg-rose-500 rounded flex items-center justify-center text-white font-bold text-xs italic">
+                                        01</div>
+                                    <div class="flex-1">
+                                        <div class="h-2.5 w-24 bg-surface-container-high rounded mb-1.5"></div>
+                                        <div class="h-1.5 w-16 bg-surface-container rounded opacity-50"></div>
+                                    </div>
+                                    <div class="w-12 h-8 bg-rose-100 rounded-md"></div>
+                                </div>
+                                <div class="flex items-center gap-4 bg-white p-2 rounded-lg shadow-sm">
+                                    <div
+                                        class="w-10 h-10 bg-rose-400 rounded flex items-center justify-center text-white font-bold text-xs italic">
+                                        02</div>
+                                    <div class="flex-1">
+                                        <div class="h-2.5 w-32 bg-surface-container-high rounded mb-1.5"></div>
+                                        <div class="h-1.5 w-12 bg-surface-container rounded opacity-50"></div>
+                                    </div>
+                                    <div class="w-12 h-8 bg-rose-100 rounded-md"></div>
+                                </div>
+                                <div class="flex items-center gap-4 bg-white p-2 rounded-lg shadow-sm opacity-60">
+                                    <div
+                                        class="w-10 h-10 bg-rose-300 rounded flex items-center justify-center text-white font-bold text-xs italic">
+                                        03</div>
+                                    <div class="flex-1">
+                                        <div class="h-2.5 w-20 bg-surface-container-high rounded mb-1.5"></div>
+                                        <div class="h-1.5 w-24 bg-surface-container rounded opacity-50"></div>
+                                    </div>
+                                    <div class="w-12 h-8 bg-rose-100 rounded-md"></div>
+                                </div>
+                            </div>
+                            <div
+                                class="mt-8 p-4 bg-primary-container/20 rounded-2xl border border-primary-container/30">
+                                <p class="text-[10px] text-primary-dim font-medium leading-relaxed italic">
+                                    "这份榜单将作为你个人主页的『殿堂展示』，每24小时可更新一次。"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer Shell -->
+    <footer class="w-full py-12 flex flex-col items-center gap-4 mt-20 tonal-shift-bg bg-transparent">
+        <div class="flex gap-8">
+            <a class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-rose-400 underline-offset-4 opacity-80 hover:opacity-100 transition-all"
+                href="#">语言: 简体中文</a>
+            <a class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-rose-400 underline-offset-4 opacity-80 hover:opacity-100 transition-all"
+                href="#">服务协议</a>
+            <a class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em] text-slate-400 hover:text-rose-400 underline-offset-4 opacity-80 hover:opacity-100 transition-all"
+                href="#">隐私政策</a>
+        </div>
+        <p class="font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em] text-rose-300">© 2024 Kobox 小匣子.
+            Dreamy ACG Curation.</p>
+    </footer>
+</body>
+
+</html>

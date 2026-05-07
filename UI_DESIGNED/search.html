@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#004050",
+                        "outline": "#7a7673",
+                        "secondary-fixed": "#fad3fd",
+                        "on-secondary": "#ffeefd",
+                        "primary-dim": "#75404c",
+                        "surface-bright": "#fbf5f1",
+                        "tertiary-dim": "#00576c",
+                        "inverse-surface": "#0f0e0c",
+                        "secondary-container": "#fad3fd",
+                        "on-primary-fixed": "#4d1f2b",
+                        "on-secondary-fixed-variant": "#6d4f72",
+                        "on-primary-container": "#65323e",
+                        "surface-container": "#ede7e3",
+                        "on-error": "#ffefee",
+                        "tertiary": "#1a6379",
+                        "inverse-on-surface": "#a09c99",
+                        "secondary-dim": "#624568",
+                        "on-tertiary": "#e2f6ff",
+                        "on-surface-variant": "#5e5b58",
+                        "surface-container-low": "#f6f0eb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-dim": "#9f0519",
+                        "on-surface": "#302e2c",
+                        "primary-fixed": "#feb6c4",
+                        "secondary-fixed-dim": "#ebc5ef",
+                        "on-primary-fixed-variant": "#703b47",
+                        "on-tertiary-container": "#005469",
+                        "error": "#b31b25",
+                        "on-secondary-container": "#634668",
+                        "on-background": "#302e2c",
+                        "primary-fixed-dim": "#efa9b6",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed-variant": "#105e73",
+                        "surface-dim": "#d9d3ce",
+                        "surface-container-high": "#e7e1dd",
+                        "on-error-container": "#570008",
+                        "outline-variant": "#b1aca9",
+                        "primary-container": "#feb6c4",
+                        "surface-tint": "#834b58",
+                        "background": "#fbf5f1",
+                        "secondary": "#6f5174",
+                        "on-primary": "#ffeff0",
+                        "surface": "#fbf5f1",
+                        "tertiary-fixed": "#a3e3fd",
+                        "primary": "#834b58",
+                        "on-secondary-fixed": "#4f3455",
+                        "inverse-primary": "#feb6c4",
+                        "surface-container-highest": "#e2dcd7",
+                        "tertiary-container": "#a3e3fd",
+                        "surface-variant": "#e2dcd7",
+                        "tertiary-fixed-dim": "#95d5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: rgba(251, 245, 241, 0.6);
+            backdrop-filter: blur(20px);
+        }
+
+        .floating-orb {
+            filter: blur(40px);
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-container min-h-screen relative overflow-x-hidden">
+    <!-- Decorative Orbs -->
+    <div class="fixed top-[-10%] left-[-5%] w-96 h-96 rounded-full bg-tertiary-fixed opacity-20 floating-orb -z-10">
+    </div>
+    <div class="fixed bottom-[10%] right-[-5%] w-80 h-80 rounded-full bg-primary-fixed opacity-20 floating-orb -z-10">
+    </div>
+    <div class="fixed top-[40%] right-[10%] w-64 h-64 rounded-full bg-secondary-fixed opacity-20 floating-orb -z-10">
+    </div>
+    <!-- TopNavBar -->
+    <header
+        class="sticky top-0 z-50 flex justify-between items-center px-8 py-3 rounded-full mt-4 mx-auto max-w-5xl bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl tonal-shift shadow-sm shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none">
+        <div class="flex items-center gap-2">
+            <span class="text-2xl font-bold text-rose-500 dark:text-rose-400 tracking-tighter font-headline">Kobox
+                (小匣子)</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-8 font-['Epilogue'] text-sm font-medium tracking-wide">
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">我的展柜</a>
+            <a class="text-rose-600 dark:text-rose-300 border-b-2 border-rose-400 pb-1" href="#">搜索添加</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">喜欢榜</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">个人设置</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button
+                class="p-2 hover:bg-rose-50/50 dark:hover:bg-rose-900/20 rounded-full transition-all text-rose-400 dark:text-rose-300">
+                <span class="material-symbols-outlined" data-icon="qr_code_2">qr_code_2</span>
+            </button>
+            <div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary-fixed-dim">
+                <img alt="User Avatar" class="w-full h-full object-cover"
+                    data-alt="Soft aesthetic digital illustration of an anime character profile portrait with pastel colors"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOiHqy0iaEedjunarGt7cyukJRQl4gsooXgVC_9JXawxe44P9o4UugyCLk77yhAMCMo6IFmMZ6-ses77Uvnau6dQP4DBsJoCYZQR33eq-6A08WDQhzbCi3fSadJ0kHOFakpdmvqUBj7xRrgxilcQzOI34ZNSRZjlEUi9vn7_l4kNxQVEnNCKgDNud_DDh3ol2If3FI74UuMthXV3moE-SrSzcQVWTNenfxNAP739gPvISHH3i-klroaqMC4A9aeFiMNDmQQYJF2-o" />
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-6 pt-20 pb-32">
+        <!-- Search Section -->
+        <section class="flex flex-col items-center text-center mb-24 relative">
+            <!-- Decorative Sticker 1 -->
+            <div
+                class="absolute -top-12 -left-4 rotate-[-12deg] bg-secondary-container text-on-secondary-container px-4 py-2 rounded-lg shadow-sm font-label text-xs tracking-widest flex items-center gap-1">
+                <span class="material-symbols-outlined text-[14px]"
+                    style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                <span>NEW ARRIVAL</span>
+            </div>
+            <h1 class="font-headline text-5xl md:text-6xl font-extrabold text-on-surface tracking-tight mb-6">
+                搜索你的次元记忆
+            </h1>
+            <p class="text-on-surface-variant text-lg mb-12 max-w-lg mx-auto">
+                在这里发现、整理并守护那些触动灵魂的幻想篇章
+            </p>
+            <div class="w-full max-w-2xl relative group">
+                <div
+                    class="absolute inset-0 bg-primary-fixed/20 blur-3xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-700">
+                </div>
+                <div
+                    class="relative bg-surface-container-lowest shadow-[0_20px_50px_rgba(48,46,44,0.06)] rounded-full flex items-center p-2 pl-8 border border-outline-variant/10">
+                    <span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+                    <input
+                        class="w-full bg-transparent border-none focus:ring-0 px-4 text-on-surface placeholder:text-outline-variant font-medium"
+                        placeholder="输入番剧名称、年份或画师..." type="text" />
+                    <button
+                        class="bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-headline font-bold hover:brightness-105 active:scale-95 transition-all">
+                        寻找
+                    </button>
+                </div>
+            </div>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <span class="text-xs font-label uppercase tracking-widest text-outline-variant">热门搜索:</span>
+                <a class="text-xs font-label bg-surface-container-low px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-secondary-fixed-dim transition-colors"
+                    href="#">葬送的芙莉莲</a>
+                <a class="text-xs font-label bg-surface-container-low px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-secondary-fixed-dim transition-colors"
+                    href="#">赛博朋克2077</a>
+                <a class="text-xs font-label bg-surface-container-low px-4 py-1.5 rounded-full text-on-surface-variant hover:bg-secondary-fixed-dim transition-colors"
+                    href="#">物语系列</a>
+            </div>
+        </section>
+        <!-- Results Grid -->
+        <section class="space-y-12">
+            <div class="flex justify-between items-end">
+                <div class="space-y-1">
+                    <h2 class="font-headline text-2xl font-bold flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary"
+                            data-icon="auto_awesome">auto_awesome</span>
+                        为你精选
+                    </h2>
+                    <p class="text-sm text-outline-variant">根据你的展柜品味推荐</p>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="p-2 bg-surface-container-low rounded-full text-outline hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                    </button>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+                <!-- Result Card 1 -->
+                <div
+                    class="group relative bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:rotate-1">
+                    <div class="aspect-[3/4] overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Aesthetic anime illustration of a girl looking at a galaxy sky with vibrant purples and blues"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy98pfJKFL84ej16qmG9vG_LlF_c4gCozo8D4NRPeK7xipNyWeUmbqZp28phFUBzbhwHJ0kkFD_fDIVGjOBv4Zoght_8LFpHl21gtcpIz6OTsgRBp9um1WUaMtn2-pblIYpvERQocxfGCO8imUiec8kWbI1skZiR4o3MWLxaaKbwqECYjbEZBQHtN5wlSTiIx0cmftF0u5_0b6VTXwwEiwHQEFmRvLjWYCE6xfCdwKtf_uLLmRqT3Jb63v08d943uQui1MbkAeNUI" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-2 py-1 rounded text-[10px] text-white font-label tracking-widest">
+                            2024 SPRING</div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3
+                                class="font-headline text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                星尘的回响</h3>
+                            <div class="flex gap-2 text-[10px] font-label text-outline uppercase tracking-wider">
+                                <span>奇幻</span>
+                                <span>•</span>
+                                <span>治愈</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="w-full py-2.5 rounded-full border border-outline-variant/30 text-xs font-bold hover:bg-primary-container hover:border-transparent transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm" data-icon="bookmark">bookmark</span>
+                                已追
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-secondary-container hover:border-transparent transition-all">在追</button>
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-tertiary-container hover:border-transparent transition-all">想看</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Card 2 -->
+                <div
+                    class="group relative bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:-rotate-1 translate-y-4">
+                    <div class="aspect-[3/4] overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Traditional Japanese shrine architecture with cherry blossom petals falling, soft morning light, anime style"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYRnP13lCG7qpAhuxF90Q5ZAsTTgvjpR3GF2xBDPvAW1fxKphQ8WiMq3oqmoqWYQxwsWEhAHyZjSo8Efh-MrrvVJrPJgftLRr3OU67yBaX3epMG9hFX3Yw3S8PNbILY7R3D1InIf9TCM7EwcltEat-Uli4hOBbv8VRBzjI52TMmaoIOTlsTMMSQb7cPLjQMv7WCFFZcOhkWc4hLz3aKaL7s1R8iSKeZl_9bm_3rU_bpPFgJnZeuz2JZj90AkFK_wPyigKFMcuo2q0" />
+                        <div
+                            class="absolute top-4 right-4 bg-primary-container text-on-primary-container px-2 py-1 rounded text-[10px] font-label font-bold tracking-widest">
+                            NEW</div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3
+                                class="font-headline text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                落樱之庭的告白</h3>
+                            <div class="flex gap-2 text-[10px] font-label text-outline uppercase tracking-wider">
+                                <span>校园</span>
+                                <span>•</span>
+                                <span>浪漫</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="w-full py-2.5 rounded-full border border-outline-variant/30 text-xs font-bold hover:bg-primary-container hover:border-transparent transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                                一键入柜
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-secondary-container hover:border-transparent transition-all">在追</button>
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-tertiary-container hover:border-transparent transition-all">想看</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Card 3 -->
+                <div
+                    class="group relative bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:rotate-1">
+                    <div class="aspect-[3/4] overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Cyberpunk city street at night with neon lights reflecting on wet pavement, cinematic anime style"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV6L4qx04Z-xi6wNWHzQ3o3KhJIeUeTvv_Uk45MomgwRZQupUtkWVRK_8pds9H6k_VeV6osHdOXRs4jMu_nWpEfVYOnAn_7GY-YexOoE1RhrMguxdwa3i-NtJQpO4BluklMtF4vQ2Yi4jg68fRLQlYzDoMrvRQJLVa4odj00yndYdK89RbrTAqieVN21dUPyEORidPkhk3tuIEv91H8pWUiHMo11wMPqPczQIMPYxnpIA4JyJ_cNxMLXcfYno9AyeWTOa_KCoD7NU" />
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3
+                                class="font-headline text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                霓虹边缘: 2099</h3>
+                            <div class="flex gap-2 text-[10px] font-label text-outline uppercase tracking-wider">
+                                <span>赛博朋克</span>
+                                <span>•</span>
+                                <span>动作</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="w-full py-2.5 rounded-full border border-outline-variant/30 text-xs font-bold hover:bg-primary-container hover:border-transparent transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm" data-icon="done">done</span>
+                                已加入
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button
+                                    class="py-2.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-bold">正在追</button>
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-tertiary-container hover:border-transparent transition-all">想看</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Sticker Decor -->
+                    <div
+                        class="absolute -top-3 -right-3 rotate-12 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div class="bg-soft-gold bg-[#F3E5AB] p-2 rounded-full shadow-lg">
+                            <span class="material-symbols-outlined text-primary text-sm"
+                                style="font-variation-settings: 'FILL' 1;">star</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Result Card 4 -->
+                <div
+                    class="group relative bg-surface-container-lowest rounded-xl overflow-hidden transition-all duration-500 hover:-rotate-1 translate-y-2">
+                    <div class="aspect-[3/4] overflow-hidden relative">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            data-alt="Dreamy floating islands in a sea of clouds with soft pastel sunset lighting, high fantasy anime art"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0F35he7r4xRW1ga63nSwAfWPEsZ95ZmqVhFSInuiB04iNiyjN6w_iT10SHqyzQE8TM4kryTP9iap_z47NNbe4UGhJW0uUaaT8j6jxFoMiaIrwoa7ioI83Gk4FAgo3AOJ4GHsQm6aHJMmHRttG1tw919e63C6XzTtlDITPAu88J28kr-93WCu35yGfijQ3GbEOy3JAE8MkJCT5c_JDz9YhG5gETni9pCw-qc3JMtu6okzrrWRszp2ijhVIThcSF5KaToXqIATGxks" />
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="space-y-1">
+                            <h3
+                                class="font-headline text-lg font-bold group-hover:text-primary transition-colors leading-tight">
+                                浮空岛编年史</h3>
+                            <div class="flex gap-2 text-[10px] font-label text-outline uppercase tracking-wider">
+                                <span>冒险</span>
+                                <span>•</span>
+                                <span>奇幻</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <button
+                                class="w-full py-2.5 rounded-full border border-outline-variant/30 text-xs font-bold hover:bg-primary-container hover:border-transparent transition-all flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                                一键入柜
+                            </button>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-secondary-container hover:border-transparent transition-all">在追</button>
+                                <button
+                                    class="py-2.5 rounded-full border border-outline-variant/30 text-[10px] font-bold hover:bg-tertiary-container hover:border-transparent transition-all">想看</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- More Results Indicator -->
+            <div class="pt-12 flex justify-center">
+                <button
+                    class="flex items-center gap-2 text-outline hover:text-primary transition-colors font-label text-sm tracking-widest uppercase">
+                    下滑探索更多记忆
+                    <span class="material-symbols-outlined animate-bounce">keyboard_double_arrow_down</span>
+                </button>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 flex flex-col items-center gap-4 mt-20 tonal-shift-bg bg-transparent font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em]">
+        <div class="flex gap-8 opacity-80 hover:opacity-100 transition-all">
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">语言: 简体中文</a>
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">服务协议</a>
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">隐私政策</a>
+        </div>
+        <p class="text-rose-300">© 2024 Kobox 小匣子. Dreamy ACG Curation.</p>
+    </footer>
+    <!-- SideNavBar (Mobile Triggered or Expanded) -->
+    <aside
+        class="hidden lg:flex fixed left-0 top-0 h-full w-72 z-[60] flex-col p-6 bg-[#fbf5f1]/80 dark:bg-slate-950/80 backdrop-blur-2xl no-border shadow-2xl shadow-[40px_0_60px_-15px_rgba(48,46,44,0.05)] rounded-r-[3rem] font-['Be_Vietnam_Pro'] antialiased">
+        <div class="mb-12 flex flex-col items-center text-center">
+            <div class="w-20 h-20 rounded-full p-1 bg-gradient-to-tr from-primary to-tertiary mb-4">
+                <img alt="User character portrait" class="w-full h-full object-cover rounded-full bg-surface"
+                    data-alt="Anime style illustration of a female collector character with stylish glasses and pastel hair"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuANBi_bq6GIix1NKreGJV2a4S5yj2VPKcMjaMTWlt8RZoKOymjVQLiZQaIdyZFDYe3QzpWiOgD4OVeW5fWAxlqyELD4GAFSDmuXSSFzhoFLLl2w0i58IAyP8RviAVUecvPfnxxCoM7dyizqVmzZ1o745ki0rDNCswKDEUM4V9eznQnhVqWpI-1KvETPmM9Tea-OcMVl4F1inYeK_Ae-1ORqsQ0k6xyx-RcxDDSFUSDAF6WsMX-xe6XrsJQAWLR5xiZqjEOBBv5N1JQ" />
+            </div>
+            <h2 class="text-xl font-bold text-rose-500 font-headline">小匣子收藏家</h2>
+            <p class="text-[10px] text-outline-variant mt-1">在梦境中编织我的次元碎片</p>
+        </div>
+        <nav class="flex-1 space-y-2">
+            <a class="flex items-center gap-4 px-6 py-4 text-slate-500 dark:text-slate-400 hover:translate-x-1 transition-transform group"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+                <span class="font-medium">我的展柜</span>
+            </a>
+            <a class="flex items-center gap-4 px-6 py-4 bg-rose-100/50 dark:bg-rose-900/30 text-rose-600 dark:text-rose-200 rounded-2xl rotate-1 duration-500"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                <span class="font-medium">搜索添加</span>
+            </a>
+            <a class="flex items-center gap-4 px-6 py-4 text-slate-500 dark:text-slate-400 hover:translate-x-1 transition-transform group"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+                <span class="font-medium">喜欢榜</span>
+            </a>
+            <a class="flex items-center gap-4 px-6 py-4 text-slate-500 dark:text-slate-400 hover:translate-x-1 transition-transform group"
+                href="#">
+                <span class="material-symbols-outlined" data-icon="settings">settings</span>
+                <span class="font-medium">个人设置</span>
+            </a>
+        </nav>
+        <button
+            class="mt-auto bg-primary text-on-primary py-4 rounded-2xl font-headline font-bold hover:brightness-110 transition-all flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined" data-icon="share">share</span>
+            分享收藏
+        </button>
+    </aside>
+</body>
+
+</html>

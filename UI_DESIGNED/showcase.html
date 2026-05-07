@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kobox 小匣子 - 我的次元收藏</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Icons -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#004050",
+                        "outline": "#7a7673",
+                        "secondary-fixed": "#fad3fd",
+                        "on-secondary": "#ffeefd",
+                        "primary-dim": "#75404c",
+                        "surface-bright": "#fbf5f1",
+                        "tertiary-dim": "#00576c",
+                        "inverse-surface": "#0f0e0c",
+                        "secondary-container": "#fad3fd",
+                        "on-primary-fixed": "#4d1f2b",
+                        "on-secondary-fixed-variant": "#6d4f72",
+                        "on-primary-container": "#65323e",
+                        "surface-container": "#ede7e3",
+                        "on-error": "#ffefee",
+                        "tertiary": "#1a6379",
+                        "inverse-on-surface": "#a09c99",
+                        "secondary-dim": "#624568",
+                        "on-tertiary": "#e2f6ff",
+                        "on-surface-variant": "#5e5b58",
+                        "surface-container-low": "#f6f0eb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-dim": "#9f0519",
+                        "on-surface": "#302e2c",
+                        "primary-fixed": "#feb6c4",
+                        "secondary-fixed-dim": "#ebc5ef",
+                        "on-primary-fixed-variant": "#703b47",
+                        "on-tertiary-container": "#005469",
+                        "error": "#b31b25",
+                        "on-secondary-container": "#634668",
+                        "on-background": "#302e2c",
+                        "primary-fixed-dim": "#efa9b6",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed-variant": "#105e73",
+                        "surface-dim": "#d9d3ce",
+                        "surface-container-high": "#e7e1dd",
+                        "on-error-container": "#570008",
+                        "outline-variant": "#b1aca9",
+                        "primary-container": "#feb6c4",
+                        "surface-tint": "#834b58",
+                        "background": "#fbf5f1",
+                        "secondary": "#6f5174",
+                        "on-primary": "#ffeff0",
+                        "surface": "#fbf5f1",
+                        "tertiary-fixed": "#a3e3fd",
+                        "primary": "#834b58",
+                        "on-secondary-fixed": "#4f3455",
+                        "inverse-primary": "#feb6c4",
+                        "surface-container-highest": "#e2dcd7",
+                        "tertiary-container": "#a3e3fd",
+                        "surface-variant": "#e2dcd7",
+                        "tertiary-fixed-dim": "#95d5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .dreamy-gradient {
+            background: linear-gradient(135deg, #fbf5f1 0%, #ffeefd 50%, #e2f6ff 100%);
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .floating-orb {
+            filter: blur(60px);
+            opacity: 0.15;
+            position: fixed;
+            z-index: -1;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed min-h-screen relative overflow-x-hidden">
+    <!-- Background Orbs -->
+    <div class="floating-orb w-96 h-96 bg-primary-fixed top-[-10%] left-[-10%] rounded-full"></div>
+    <div class="floating-orb w-[30rem] h-[30rem] bg-tertiary-fixed bottom-[-5%] right-[-5%] rounded-full"></div>
+    <div class="floating-orb w-64 h-64 bg-secondary-fixed top-1/2 left-1/4 rounded-full"></div>
+    <!-- TopNavBar -->
+    <nav
+        class="sticky top-0 z-50 flex justify-between items-center px-8 py-3 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-full mt-4 mx-auto max-w-5xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none font-['Epilogue'] text-sm font-medium tracking-wide">
+        <div class="text-2xl font-bold text-rose-500 dark:text-rose-400 tracking-tighter">Kobox (小匣子)</div>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-rose-600 dark:text-rose-300 border-b-2 border-rose-400 pb-1" href="#">我的展柜</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">搜索添加</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">喜欢榜</a>
+            <a class="text-slate-500 dark:text-slate-400 hover:text-rose-400 transition-colors" href="#">个人设置</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button
+                class="p-2 hover:bg-rose-50/50 dark:hover:bg-rose-900/20 rounded-full transition-all text-slate-500">
+                <span class="material-symbols-outlined">qr_code_2</span>
+            </button>
+            <div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden ring-2 ring-white">
+                <img alt="User Avatar" class="w-full h-full object-cover"
+                    data-alt="soft aesthetic portrait of a young woman with gentle expression and pastel lighting, ethereal anime-style photography"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMDZX8ZiyKSgJoNOTDDXCOEFjiwaQC11WCA6Ymp42d4NUAGXjOyF2ffjhoJUncF7yvlwHOJ2YaLcnuLkSYzFWPmK7H5X2cZ9Wapd8WFRiF9GeXhUJtBBHGkKCHzhuNa-9aak2p05TuY8jn36lwEuP9qD34fz79rEh_-_koupYZlxh8qNkzVtNYMy3DgcmJhxsv7QmfSaobea1pZxIaGTUgQiuV0lJZfckFhXt1Lz327STfPdjhdS7ylIT4gl-OOEl91KW6hOOuTnw" />
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-7xl mx-auto px-6 py-12">
+        <!-- Profile Header Section -->
+        <header class="relative mb-20">
+            <div class="flex flex-col md:flex-row items-end gap-8">
+                <div class="relative group">
+                    <div
+                        class="w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden shadow-2xl rotate-[-2deg] transition-transform hover:rotate-0 duration-500 ring-4 ring-white">
+                        <img alt="User Avatar" class="w-full h-full object-cover"
+                            data-alt="ethereal portrait of a creative individual with soft daylight and dreamy pastel tones, high-end editorial style"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDthqI7XD4ONHe9geKPQgya_xoIgZCXmXyxuvN0Y-zF0vZ97AB9C3OLZkHm9Yyo4aMltAUJI-zjZNy3akpB5n54rRDAolSqnHH6OxLxZwD212ORuZBIY83aUpQ0PrwCnLmPDewSdqGwJi0mAlLq7jwiv50vpdm4Z9BT4X2br4tHztRV8uQo9C6sFAULyufjV2zM6_2HLZvNRL5-Kab5SgQqAmj7qXHPodkz1SrFJg7-oUSwbTUFCvdLv21bITeDr9GoWgwQEhLsSCc" />
+                    </div>
+                    <div
+                        class="absolute -bottom-2 -right-2 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-label font-bold tracking-widest shadow-sm">
+                        LV.42
+                    </div>
+                </div>
+                <div class="flex-1 space-y-3 pb-2">
+                    <div class="flex items-center gap-4">
+                        <h1 class="text-4xl font-headline font-extrabold tracking-tight text-on-surface">追番狂人A</h1>
+                        <span class="material-symbols-outlined text-rose-400"
+                            style="font-variation-settings: 'FILL' 1;">verified</span>
+                    </div>
+                    <p class="text-on-surface-variant font-medium">在梦中编织次元碎片</p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full">
+                            <span class="material-symbols-outlined text-sm text-tertiary">cake</span>
+                            <span class="text-xs font-label">05.24</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-3 py-1 bg-surface-container-low rounded-full">
+                            <span class="material-symbols-outlined text-sm text-primary">favorite</span>
+                            <span class="text-xs font-label">2.4k 关注者</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label font-bold flex items-center gap-2 hover:opacity-90 transition-all shadow-sm">
+                        <span class="material-symbols-outlined text-lg">share</span>
+                        分享收藏
+                    </button>
+                </div>
+            </div>
+        </header>
+        <!-- Section 1: 已追番 (Completed) - Hero Asymmetrical Layout (Visual Focus) -->
+        <section class="mb-32">
+            <div class="flex justify-between items-baseline mb-12">
+                <h2 class="text-5xl font-headline font-extrabold tracking-tighter text-on-surface">
+                    已追番 <span class="text-primary-fixed-dim italic font-light ml-2">Completed</span>
+                </h2>
+                <a class="text-primary font-label font-bold text-sm underline underline-offset-8" href="#">查看全部 (94)</a>
+            </div>
+            <div class="relative grid grid-cols-12 gap-6 items-start">
+                <!-- Large Primary Item -->
+                <div class="col-span-12 lg:col-span-6 group relative">
+                    <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative">
+                        <img alt="Anime Poster"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            data-alt="cinematic anime landscape with glowing cherry blossom trees at night under a giant moon, ethereal lighting, high detail"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDULR9cKJWRrWYtMvCjwv5nSTyd2eRXuSyfdhNwtVLaC66e1zqAWgk1xrq96Tq76MF8trl5IPKt0gFgNrBfAqN6oyBjP4RfycHQt45fAhlSXYag-mf9each2eN47jT4oaqDdxMjj-5N-hsaffHw1EOxLg96xYUF_bZaoaoqnnannOaL6s_M4Dr_ER-rlNKxyGhOjGvHoi8QzIv0-nJnM9-l3Mcr9GzxJ1B_3dprgAum-d6wpNcVCLQq7hQeX8A1J5vdNqLQf89jd1w" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent opacity-60">
+                        </div>
+                        <div class="absolute bottom-8 left-8 right-8">
+                            <span
+                                class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-[10px] font-label font-bold uppercase tracking-widest mb-3 inline-block">Perfect
+                                Score 10/10</span>
+                            <h3 class="text-3xl font-headline font-bold text-white mb-2">葬送的芙莉莲</h3>
+                            <p class="text-white/70 text-sm font-light">一趟漫长的告别旅程，治愈且深刻。</p>
+                        </div>
+                    </div>
+                    <!-- Decorative Sticker -->
+                    <div
+                        class="absolute -top-4 -left-4 w-20 h-20 bg-secondary-fixed rounded-full shadow-lg flex items-center justify-center rotate-[-12deg] z-10 border-4 border-white">
+                        <span class="material-symbols-outlined text-secondary-dim"
+                            style="font-variation-settings: 'FILL' 1;">star</span>
+                    </div>
+                </div>
+                <!-- Secondary items stacked/staggered -->
+                <div class="col-span-12 lg:col-span-3 space-y-12 lg:pt-12">
+                    <div class="group">
+                        <div
+                            class="aspect-[3/4] rounded-lg overflow-hidden shadow-xl mb-4 relative rotate-2 group-hover:rotate-0 transition-all">
+                            <img alt="Anime Poster" class="w-full h-full object-cover"
+                                data-alt="vibrant neon Tokyo street scene in anime aesthetic, rainy night with reflections and purple highlights"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3QZSn-D5g2lbfe9YyhnL-bJUFvJdKZyQO1kPJlu1E9kYbXr0LQ3Sk5UAf3a-PjN4Q8PtNK2c0UfFsC8EjpjPJgDJsbgP1Ag8U_0-J3qv_MjYFfijQYym5lVeaOeCJNvdtTilS6N7LLGxPMaT8iKYS6_fGY-bnWDesbwbeWYUCz7eyTd1Eff9_GCcF2EO9C3RWctivpEJlpiia-nmX4ApBhCmaurEQA10R0shNnc26mwBsuyq6Xi2gyghCxRfrFpo4NNDIDTbasnc" />
+                            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full">
+                                <span class="material-symbols-outlined text-white text-sm">favorite</span>
+                            </div>
+                        </div>
+                        <h4 class="font-headline font-bold text-xl px-2">赛博朋克：边缘行者</h4>
+                        <p class="text-on-surface-variant text-xs px-2 font-label tracking-wide uppercase">2023 · 动作/科幻
+                        </p>
+                    </div>
+                    <div class="group">
+                        <div
+                            class="aspect-[3/4] rounded-lg overflow-hidden shadow-xl mb-4 relative -rotate-3 group-hover:rotate-0 transition-all">
+                            <img alt="Anime Poster" class="w-full h-full object-cover"
+                                data-alt="tranquil traditional Japanese shrine in a dense forest, soft sunlight filtering through leaves, anime background art style"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrDldeEXILv-x2jIJQipYLuttLv_MTsQLitBYSfo1m6EmKOqEA2Rl6LSMv_WnpAlguO_vEbV9MEZkERbQAqofhPbazjJ64Jg8p9nR409zDtN0yZRrXCEgeJAj3YZsxDRGfVy3Z-lu_rmp3DGRaAlOlv-69_94RpDOdZukgKinCms6spXzhTi1PJujLHNI7N4ho9e1FuVwrSv_4L3qAoT6YcOeRhQrKACnD2JCaTUoMsK6XQ7svLvvCjEZTl7werePI6rkxazpxxk0" />
+                        </div>
+                        <h4 class="font-headline font-bold text-xl px-2">夏目友人帐</h4>
+                        <p class="text-on-surface-variant text-xs px-2 font-label tracking-wide uppercase">经典 · 治愈</p>
+                    </div>
+                </div>
+                <!-- Third column offset -->
+                <div class="col-span-12 lg:col-span-3 space-y-8">
+                    <div class="group">
+                        <div
+                            class="aspect-[3/4] rounded-lg overflow-hidden shadow-xl mb-4 relative rotate-1 group-hover:rotate-0 transition-all">
+                            <img alt="Anime Poster" class="w-full h-full object-cover"
+                                data-alt="close-up of stylized mechanical eyes, glowing blue circuitry on a sleek dark surface, sci-fi anime style"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhWh6nQmTawtC_Nw1J_5Z3sGZO8xL7uEjM_nTbWb4-kBoWjMKVIsBjNYBW7ZeSPCqzQ9GWsOp8m_q05kCa0q4F7gBhj83EoEda7JYONbZzRN87ByfjMN_n85wXbRyGLBX4IwtME4zl5jHLxbm-J-ddbJVNvytN0l4RzdQ3zoHWLHK5owjCszt5WZdPBAK9nCsnsIb_IZnurw6d7iQrylAAEF2fQ0edqL_eRKNcRO0BH_lB07DMez7QFdoj-0knCfmB7V9tszMVxcg" />
+                            <div
+                                class="absolute -bottom-2 -right-2 w-12 h-12 bg-tertiary-fixed rounded-full shadow-md flex items-center justify-center rotate-12 border-2 border-white">
+                                <span class="material-symbols-outlined text-on-tertiary-fixed text-sm">verified</span>
+                            </div>
+                        </div>
+                        <h4 class="font-headline font-bold text-xl px-2">新世纪福音战士</h4>
+                        <p class="text-on-surface-variant text-xs px-2 font-label tracking-wide uppercase">神作 · 心理</p>
+                    </div>
+                    <div class="group">
+                        <div
+                            class="aspect-[3/4] rounded-lg overflow-hidden shadow-xl mb-4 relative -rotate-1 group-hover:rotate-0 transition-all">
+                            <img alt="Anime Poster" class="w-full h-full object-cover"
+                                data-alt="dreamy cloudscape with multiple moons and floating islands, soft pastel colors, Makoto Shinkai style"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_hryU0Y17ZRUdjzga7axKDdCZPUquX7A1m1fd4ubNaPVTWc1v8Um7WxjT2xo4zm0QMaCvGXPYtVV7ng0xX4R8WQVe2CtUKj8uiLTiniyn8Slf3A95nqDmW-s80PKkD7La00-5N74Uq-aNTUBSMA3YE_iF0VOL1Z0f6VLAze8QVsJlpxlloHnCRE_yp1FOMFn42AIp_AExBLVWrycQOozZ_-ZNp5_l2HTd4M_7r5kyfHbWvCV5YBsNjaWAB4aFIc4a5_4C2ocvJms" />
+                        </div>
+                        <h4 class="font-headline font-bold text-xl px-2">你的名字</h4>
+                        <p class="text-on-surface-variant text-xs px-2 font-label tracking-wide uppercase">2016 · 爱情</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section 2: 正在追 (Watching) - Floating Cards Grid (Simplified) -->
+        <section class="mb-32">
+            <div class="flex justify-between items-baseline mb-12">
+                <h2 class="text-4xl font-headline font-extrabold tracking-tighter text-on-surface">
+                    正在追 <span class="text-tertiary-dim italic font-light ml-2">Watching</span>
+                </h2>
+                <div class="flex gap-2">
+                    <button
+                        class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_left</span>
+                    </button>
+                    <button
+                        class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-sm">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row gap-8 overflow-x-auto pb-8 no-scrollbar">
+                <!-- Watching Card 1 -->
+                <div
+                    class="min-w-[320px] bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] flex items-center gap-5 group hover:-translate-y-2 transition-all">
+                    <div class="w-24 h-32 rounded-md overflow-hidden flex-shrink-0">
+                        <img alt="Anime" class="w-full h-full object-cover"
+                            data-alt="minimalist anime scene with character silhouette looking at a starry night sky, deep blues and purples"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUpKgrRiVOCRJihFDbg5I0TXXJhGC0EJNWG2lVv746AfI-jiBNTxD88zunBTtDToxUXcDkK-F6IR2afVt3CXo_PM83W_YuKAvt-3fXhlYeidI_4yTsFmjeCRxA4MccFPm4DCXuuotf-n2XqMd9SA8mitF8Xcy2-0bpdqESesC_YW9BV7DtQbQzXBH4ClEzu_j6koY1SjlIwHtEUJJrOvjAc2EL8USqyaHV2K4OfigEhF_QKfxC-_dOAMPdTNLhkS2iEBbCoASmXYk" />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <h5 class="font-headline font-bold text-lg leading-tight">鬼灭之刃：柱训练篇</h5>
+                        <p class="text-xs font-label text-on-surface-variant">第 8 / 12 话</p>
+                        <div class="pt-2">
+                            <span
+                                class="text-[10px] font-label font-bold uppercase tracking-wider text-primary bg-primary/5 px-2 py-0.5 rounded">Updating</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Watching Card 2 -->
+                <div
+                    class="min-w-[320px] bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] flex items-center gap-5 group hover:-translate-y-2 transition-all">
+                    <div class="w-24 h-32 rounded-md overflow-hidden flex-shrink-0">
+                        <img alt="Anime" class="w-full h-full object-cover"
+                            data-alt="atmospheric anime artwork of a library with golden dust particles in the sunlight"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuChCo8YTdmvMKs9ewMyOShzzXqqXGZQ2BbLxQ1ZYhTi-8nEYycLW3N4mnxnnZNI7lUzSejv7idbfXQg1B8yfj2NSxhROZ2mKjUJuFxNtIqxL4rPa062RC7a_VpUDsJlJYfZQQ1BkzLPqV4thvrLv90BnTrBROR4XEgSwjEK6A8atHdL-bddyjajf5JqFQ0yPK9oOCHl1-k1O6Etw4jwm3hEi7peoWjB4BRfiIoLLhXiIVJV2Ez_F5TQCVuVOCFyi3YZEQN_7veI678" />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <h5 class="font-headline font-bold text-lg leading-tight">迷宫饭</h5>
+                        <p class="text-xs font-label text-on-surface-variant">第 22 / 24 话</p>
+                        <div class="pt-2">
+                            <span
+                                class="text-[10px] font-label font-bold uppercase tracking-wider text-tertiary bg-tertiary/5 px-2 py-0.5 rounded">Airing</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Watching Card 3 -->
+                <div
+                    class="min-w-[320px] bg-surface-container-lowest p-5 rounded-lg border border-outline-variant/10 shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] flex items-center gap-5 group hover:-translate-y-2 transition-all">
+                    <div class="w-24 h-32 rounded-md overflow-hidden flex-shrink-0">
+                        <img alt="Anime" class="w-full h-full object-cover"
+                            data-alt="anime style illustration of a high school classroom at sunset, orange glow on wooden desks"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5R2yCXb25rOhnHSylsXi-L1CykO2RtmFX3hvRZA3EM2LCKY612AnPClI2ZQaH25YxruI_9oAZ5rePa0CTWyTzNepNW_H4T5fIlr3Uq0Qgd2h_SezXcEnZd5I-xLuf_gBGDO7Hyav3py5mXdkIFqWVx9qiNo0dwHZxaaNB8Di-EoQhmsMBdUUC5AHvmA95GvJdH0h39K9M7sn38VFkoXQ3U72Y-HZkoYqynFXxcROf2kXR9R_FY3RjWQvZuDr8pfkTvCqyfH9XDx0" />
+                    </div>
+                    <div class="flex-1 space-y-1">
+                        <h5 class="font-headline font-bold text-lg leading-tight">排球少年！！</h5>
+                        <p class="text-xs font-label text-on-surface-variant">第 5 / 25 话</p>
+                        <div class="pt-2">
+                            <span
+                                class="text-[10px] font-label font-bold uppercase tracking-wider text-secondary bg-secondary/5 px-2 py-0.5 rounded">Catching
+                                Up</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section 3: 想看 (Plan to Watch) - Compact Grid -->
+        <section class="mb-32">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-3xl font-headline font-extrabold tracking-tighter text-on-surface">想看</h2>
+                <span
+                    class="px-3 py-0.5 bg-surface-container-highest rounded-full text-[10px] font-label font-bold text-on-surface-variant">LIST
+                    (24)</span>
+                <div class="h-[1px] flex-1 bg-outline-variant/20 ml-4"></div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Compact Items -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-[2/3] rounded bg-surface-container-low overflow-hidden mb-3 relative">
+                        <img alt="Anime"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="stylized portrait of an anime character with vibrant hair in a futuristic setting, vivid colors"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMOaAWsT2wd2-8Kye3sU1kVFtumtHH-7rV6K4FOsboUJhJG1nxy3NzknAXWyOprgRJCeFTYgp8n_jnj-grKXL6iG-cLDJfUER70jPe684mkoMkZeK7VmoGlSPfqAI-hecUWaGimyiPaZGjCJzKkR08azZJ9AwVM5D8LGviEB8CdDY2UR9wk2wb7fb4a4WA9RbBbja6zwJxWj2t4xqL4ehFHGeQeVuTuGt8j6A0loH9WmaGKmknvxJMdH-na7wPP14yvL1h_V4rLKg" />
+                    </div>
+                    <h6 class="font-headline font-bold text-sm truncate">咒术回战 0</h6>
+                    <p class="text-[10px] font-label text-on-surface-variant">剧场版</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[2/3] rounded bg-surface-container-low overflow-hidden mb-3 relative">
+                        <img alt="Anime"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="dramatic silhouette of a swordsman in front of a giant setting sun, anime ink wash style"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuUuTNZTv-A-Qjy-6HxD_8IPUK6ZyP-0MWYV2UpgnvJy7DI0PJ0wQFULdVfQBJX4S1ipwcTUCauJIBHOF3KwMGCP299BnM9ST4SVvXHH7Z1rfrihyQ2cWUHpS8wuXYMsdlM71NMciMkRfjSazHSsQB2cn4tUaE3QTDDYL998gW6zYZ-YUADRtu5jEW8i2B0YINWAVH06jJBX9MaBDLB-o9hqiD7At4zU_izvKalLJY304BIvW2fx6MqXdfcH_mb-8tDTZvGTKwFwc" />
+                    </div>
+                    <h6 class="font-headline font-bold text-sm truncate">浪客剑心</h6>
+                    <p class="text-[10px] font-label text-on-surface-variant">2023 重置</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[2/3] rounded bg-surface-container-low overflow-hidden mb-3 relative">
+                        <img alt="Anime"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="abstract anime concept art with glowing orbs and floating petals in a void"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8wMwREssSVU2xrQXTWZm6ouCtb6dRtPoGqw6Uc4B8aOK84vyyYAlRyHVQIzg1LCUO8mdjyvbMwd-OL_bKMRzSvGvjfTKhmxC7Fj_3M5w7fsiXZVWqT-SYvxUfbhI-c2X5anUJjhP3TlRkDtqv90W-eEtD4Zt2M6B-hCQdvxfKEPbsxUg0QVSFeMo7MvLoAqXZEuLciTz0TgXlKYB34unzd0iI9jA0-jTnH2MtW0ufFusUwe8368rJiuo6iUJ_K34DwTPP26AdAQI" />
+                    </div>
+                    <h6 class="font-headline font-bold text-sm truncate">混沌武士</h6>
+                    <p class="text-[10px] font-label text-on-surface-variant">经典复刻</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[2/3] rounded bg-surface-container-low overflow-hidden mb-3 relative">
+                        <img alt="Anime"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="magical girl aesthetic with pink sparkles and celestial elements, dreamy anime art"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm2McecrwbkmbC7zb5aJYqnHmbBxiHAJi9o819Oj-AYxnow4yW9eMH7kQHWu2dVw4prhRdrHC6nx6qrM_9fXOE_dBr-K1YwRUSW9YK-Ov5qmTbADJBBfeb5l6Sgs22aMpo3r8Yo6Y1Wj5hE07z4PL8I8iXi_y6b2rjlWAlaU0A7j2FxFh3huLDbNmt3LcJztncPUsE8AQ_fJWSluXtEMXuKm4s2kOyViTM9qX_eQAuxPHVS01EiLqUgMVyBFPeJqyr1YTyDlWNZ-g" />
+                    </div>
+                    <h6 class="font-headline font-bold text-sm truncate">魔法少女小圆</h6>
+                    <p class="text-[10px] font-label text-on-surface-variant">致郁经典</p>
+                </div>
+                <div class="group cursor-pointer">
+                    <div class="aspect-[2/3] rounded bg-surface-container-low overflow-hidden mb-3 relative">
+                        <img alt="Anime"
+                            class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                            data-alt="high contrast black and white anime manga panel style illustration of a mysterious character"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBozIXy1VC3nMuKyX0NqI3T-upZ3wXzeNsgmFVaz-2TscVq6ZLEehgH50XlDcMn3lp-JCuX2KqHNQKcEFUgEr_Qav0GbG9hLHaXeKCDKORBteGFs79FET58HqcJOA-7I3jheoY_RZYzLRspJ5mKyE8WA_gtKL-zL2vbM4dCz8lAb2SjKnWkX14_uhGRLrz3LSIocd5ITSLiZfs1o_jmE8K66308N0yG1f7_KFraWN9_PwC2foJLgTG4JlHVOA-T1MzwAr_PvRI97GI" />
+                    </div>
+                    <h6 class="font-headline font-bold text-sm truncate">死亡笔记</h6>
+                    <p class="text-[10px] font-label text-on-surface-variant">智斗巅峰</p>
+                </div>
+                <!-- Add New CTA -->
+                <div class="group cursor-pointer">
+                    <div
+                        class="aspect-[2/3] rounded border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-2 hover:bg-surface-container-low transition-all">
+                        <span class="material-symbols-outlined text-outline">add_circle</span>
+                        <span class="text-[10px] font-label uppercase font-bold text-outline">添加更多</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 flex flex-col items-center gap-4 mt-20 tonal-shift-bg opacity-80 hover:opacity-100 font-['Plus_Jakarta_Sans'] text-[10px] uppercase tracking-[0.2em]">
+        <div class="flex gap-8">
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">语言: 简体中文</a>
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">服务协议</a>
+            <a class="text-slate-400 hover:text-rose-400 underline-offset-4" href="#">隐私政策</a>
+        </div>
+        <p class="text-rose-300">© 2024 Kobox 小匣子. Dreamy ACG Curation.</p>
+    </footer>
+    <!-- Fixed Floating Action Button -->
+    <button
+        class="fixed bottom-10 right-10 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[100] group">
+        <span
+            class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-500">add</span>
+    </button>
+</body>
+
+</html>

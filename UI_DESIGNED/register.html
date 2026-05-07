@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kobox 小匣子 - 登录</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#004050",
+                        "outline": "#7a7673",
+                        "secondary-fixed": "#fad3fd",
+                        "on-secondary": "#ffeefd",
+                        "primary-dim": "#75404c",
+                        "surface-bright": "#fbf5f1",
+                        "tertiary-dim": "#00576c",
+                        "inverse-surface": "#0f0e0c",
+                        "secondary-container": "#fad3fd",
+                        "on-primary-fixed": "#4d1f2b",
+                        "on-secondary-fixed-variant": "#6d4f72",
+                        "on-primary-container": "#65323e",
+                        "surface-container": "#ede7e3",
+                        "on-error": "#ffefee",
+                        "tertiary": "#1a6379",
+                        "inverse-on-surface": "#a09c99",
+                        "secondary-dim": "#624568",
+                        "on-tertiary": "#e2f6ff",
+                        "on-surface-variant": "#5e5b58",
+                        "surface-container-low": "#f6f0eb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-dim": "#9f0519",
+                        "on-surface": "#302e2c",
+                        "primary-fixed": "#feb6c4",
+                        "secondary-fixed-dim": "#ebc5ef",
+                        "on-primary-fixed-variant": "#703b47",
+                        "on-tertiary-container": "#005469",
+                        "error": "#b31b25",
+                        "on-secondary-container": "#634668",
+                        "on-background": "#302e2c",
+                        "primary-fixed-dim": "#efa9b6",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed-variant": "#105e73",
+                        "surface-dim": "#d9d3ce",
+                        "surface-container-high": "#e7e1dd",
+                        "on-error-container": "#570008",
+                        "outline-variant": "#b1aca9",
+                        "primary-container": "#feb6c4",
+                        "surface-tint": "#834b58",
+                        "background": "#fbf5f1",
+                        "secondary": "#6f5174",
+                        "on-primary": "#ffeff0",
+                        "surface": "#fbf5f1",
+                        "tertiary-fixed": "#a3e3fd",
+                        "primary": "#834b58",
+                        "on-secondary-fixed": "#4f3455",
+                        "inverse-primary": "#feb6c4",
+                        "surface-container-highest": "#e2dcd7",
+                        "tertiary-container": "#a3e3fd",
+                        "surface-variant": "#e2dcd7",
+                        "tertiary-fixed-dim": "#95d5ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Plus Jakarta Sans"]
+                    },
+                    "animation": {
+                        "float-slow": "float 8s ease-in-out infinite",
+                        "float-mid": "float 6s ease-in-out infinite",
+                        "float-fast": "float 4s ease-in-out infinite",
+                        "ripple": "ripple 15s linear infinite",
+                    },
+                    "keyframes": {
+                        "float": {
+                            "0%, 100%": { transform: "translateY(0) rotate(var(--tw-rotate, 0deg))" },
+                            "50%": { transform: "translateY(-15px) rotate(calc(var(--tw-rotate, 0deg) + 3deg))" },
+                        },
+                        "ripple": {
+                            "0%": { transform: "scale(1); opacity: 0.1;" },
+                            "50%": { transform: "scale(1.5); opacity: 0.05;" },
+                            "100%": { transform: "scale(1); opacity: 0.1;" },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .water-surface {
+            background: linear-gradient(180deg, #fbf5f1 0%, #eef6ff 100%);
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid white;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(251, 245, 241, 0.7);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+
+        .floating-photo {
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.08));
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .floating-photo:hover {
+            transform: scale(1.1) translateY(-10px) !important;
+            z-index: 60 !important;
+        }
+
+        .maple-leaf {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-surface font-body text-on-surface min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <!-- Background: Water Surface & Ripples -->
+    <div class="water-surface">
+        <div class="ripple-effect w-[800px] h-[800px] top-[-10%] left-[-20%] animate-ripple opacity-10"></div>
+        <div class="ripple-effect w-[600px] h-[600px] bottom-[-10%] right-[-10%] animate-ripple opacity-10"
+            style="animation-delay: -5s;"></div>
+        <div class="ripple-effect w-[400px] h-[400px] top-[40%] left-[30%] animate-ripple opacity-5"
+            style="animation-delay: -2s;"></div>
+    </div>
+    <!-- Floating Maple Leaves -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <span
+            class="material-symbols-outlined maple-leaf absolute text-orange-400 opacity-60 top-[15%] left-[12%] rotate-[15deg] text-3xl"
+            style="font-variation-settings: 'FILL' 1;">eco</span>
+        <span
+            class="material-symbols-outlined maple-leaf absolute text-red-400 opacity-40 top-[60%] left-[8%] rotate-[-25deg] text-2xl"
+            style="font-variation-settings: 'FILL' 1;">eco</span>
+        <span
+            class="material-symbols-outlined maple-leaf absolute text-orange-300 opacity-50 top-[25%] right-[10%] rotate-[40deg] text-4xl"
+            style="font-variation-settings: 'FILL' 1;">eco</span>
+        <span
+            class="material-symbols-outlined maple-leaf absolute text-red-500 opacity-30 bottom-[20%] right-[15%] rotate-[-10deg] text-3xl"
+            style="font-variation-settings: 'FILL' 1;">eco</span>
+        <span
+            class="material-symbols-outlined maple-leaf absolute text-orange-200 opacity-70 top-[45%] right-[25%] rotate-[70deg] text-xl"
+            style="font-variation-settings: 'FILL' 1;">eco</span>
+    </div>
+    <!-- Floating Memories Section (The Polaroids) -->
+    <div class="fixed inset-0 pointer-events-none z-10 hidden md:block">
+        <!-- Photo 1: Top Left -->
+        <div
+            class="floating-photo absolute left-[5%] top-[10%] rotate-[-12deg] animate-float-slow pointer-events-auto z-[15]">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 1" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfAbHdp-V7PjCFsASgld09jo2ol0pEaDMaP33MjaaBbB7aH16PWKOEX6XZQA1DWvnsbmh3dgWdAsn57nDlY9nM-JTYltf6o5nTczlXF9CsmcH906mrzcST5dqyxuaOuEabKAYWj9Jj8YcRkwsM73B6GzmlCBl5YBbguWiH6RDtAIrkUUWr_wfJfkXlGl7QgbT-Y4FoXCyliEVJWfAhZ9u3FG8S73qtNDwgWkOu2vGB9CpG1QAiYwXB5g4wCH74z7raEdVi2Kx-qss" />
+            </div>
+        </div>
+        <!-- Photo 2: Bottom Left -->
+        <div class="floating-photo absolute left-[12%] bottom-[15%] rotate-[8deg] animate-float-mid pointer-events-auto z-[12]"
+            style="animation-delay: -2s;">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 2" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbbTst6KRtra-BztH-81x2ZTN0WvHLnM1gfXW4dBxfEFFkDfA7w0E1RONIItQaOwoyEZPRQDYeFeYsVzhAJP-PwBAQXzIfVgtCKLFWBbAyQBiZJNV-R64N69NQ4UhLw7julMiCTOssGcmd5YEoOn0aTJoFajS_l_F9CwUZwA9wtW2BPDTgc3NG5tWgeflmgsv095-cP8UIeotzTEXa_iFlNG4yT6pjS6YydNGfdL4peYcdOf6L4A9JYAq_-UWJGGtJdXvAvcYBzjQ" />
+            </div>
+        </div>
+        <!-- Photo 3: Top Right -->
+        <div class="floating-photo absolute right-[8%] top-[5%] rotate-[15deg] animate-float-slow pointer-events-auto z-[14]"
+            style="animation-delay: -1s;">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 3" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6unRMId2EbSmwYCxLin0AWMa2Y-vsBkPlOi6m6_AkodGStSE6tH7d9Y4soW9n4THTQpmRG523e9jK_ZTsitm360nGDUgU9r0Q78LBoV5s58qFKazy-ejQ1caBNryuhQsfBEJKgldX8X4OJLNHxCgIJkn4HZCZnnjodxHudIDLvuvuMbxjUXi7QFKfhBxxuRGuXBFu3FQYRW3UjN1fIzBPhcmZ-LrJIBgU_uMKvghdSO_EMn2VsRockFZ_jYDdBU3wlfoIlevTz3I" />
+            </div>
+        </div>
+        <!-- Photo 4: Mid Right (Upside down tilted) -->
+        <div class="floating-photo absolute right-[5%] bottom-[30%] rotate-[170deg] animate-float-mid pointer-events-auto z-[11]"
+            style="animation-delay: -3.5s;">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 4" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpFNAuygowMTJ4m3WmDh-68HjtgXWar2mjnxd1AI5uA4dUMumAjtDix2ryRvDiGb5G8asLgSROm92aCbny7AdIbSeT1oNIczP_ABxBS8WS2kfdbiJI6B3OOCtFJwHKMsO39pvnShPB1hhkjNkKBmOnrnTL1FV3PRuzuBqJTf0o-l3JXaD-ewwmwMRM-2biVBjOmaDGVZN8Y6iszZO6dErEUADAntQvfOmKFciZLKk9SbtXIC5zdIt1t4jE6vNAanH4OlD_wdcTxRo" />
+            </div>
+        </div>
+        <!-- Photo 5: Very Top Center-Left -->
+        <div class="floating-photo absolute left-[28%] top-[2%] rotate-[-5deg] animate-float-fast pointer-events-auto z-[10]"
+            style="animation-delay: -0.5s;">
+            <div class="bg-white p-3 pb-8 shadow-lg border border-white/40 w-[190px]">
+                <img alt="Memory 5" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpFNAuygowMTJ4m3WmDh-68HjtgXWar2mjnxd1AI5uA4dUMumAjtDix2ryRvDiGb5G8asLgSROm92aCbny7AdIbSeT1oNIczP_ABxBS8WS2kfdbiJI6B3OOCtFJwHKMsO39pvnShPB1hhkjNkKBmOnrnTL1FV3PRuzuBqJTf0o-l3JXaD-ewwmwMRM-2biVBjOmaDGVZN8Y6iszZO6dErEUADAntQvfOmKFciZLKk9SbtXIC5zdIt1t4jE6vNAanH4OlD_wdcTxRo" />
+            </div>
+        </div>
+        <!-- Photo 6: Very Bottom Center-Right -->
+        <div class="floating-photo absolute right-[25%] bottom-[5%] rotate-[12deg] animate-float-slow pointer-events-auto z-[16]"
+            style="animation-delay: -4s;">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 6" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6unRMId2EbSmwYCxLin0AWMa2Y-vsBkPlOi6m6_AkodGStSE6tH7d9Y4soW9n4THTQpmRG523e9jK_ZTsitm360nGDUgU9r0Q78LBoV5s58qFKazy-ejQ1caBNryuhQsfBEJKgldX8X4OJLNHxCgIJkn4HZCZnnjodxHudIDLvuvuMbxjUXi7QFKfhBxxuRGuXBFu3FQYRW3UjN1fIzBPhcmZ-LrJIBgU_uMKvghdSO_EMn2VsRockFZ_jYDdBU3wlfoIlevTz3I" />
+            </div>
+        </div>
+        <!-- Photo 7: Mid Left (Upside down tilted) -->
+        <div class="floating-photo absolute left-[4%] top-[45%] rotate-[-165deg] animate-float-mid pointer-events-auto z-[13]"
+            style="animation-delay: -6s;">
+            <div class="bg-white p-3 pb-8 shadow-lg border border-white/40 w-[190px]">
+                <img alt="Memory 7" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfAbHdp-V7PjCFsASgld09jo2ol0pEaDMaP33MjaaBbB7aH16PWKOEX6XZQA1DWvnsbmh3dgWdAsn57nDlY9nM-JTYltf6o5nTczlXF9CsmcH906mrzcST5dqyxuaOuEabKAYWj9Jj8YcRkwsM73B6GzmlCBl5YBbguWiH6RDtAIrkUUWr_wfJfkXlGl7QgbT-Y4FoXCyliEVJWfAhZ9u3FG8S73qtNDwgWkOu2vGB9CpG1QAiYwXB5g4wCH74z7raEdVi2Kx-qss" />
+            </div>
+        </div>
+        <!-- Photo 8: Bottom Left-Center -->
+        <div class="floating-photo absolute left-[30%] bottom-[8%] rotate-[-4deg] animate-float-fast pointer-events-auto z-[10]"
+            style="animation-delay: -1.5s;">
+            <div class="bg-white p-3 pb-8 shadow-xl border border-white/50 w-[190px]">
+                <img alt="Memory 8" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbbTst6KRtra-BztH-81x2ZTN0WvHLnM1gfXW4dBxfEFFkDfA7w0E1RONIItQaOwoyEZPRQDYeFeYsVzhAJP-PwBAQXzIfVgtCKLFWBbAyQBiZJNV-R64N69NQ4UhLw7julMiCTOssGcmd5YEoOn0aTJoFajS_l_F9CwUZwA9wtW2BPDTgc3NG5tWgeflmgsv095-cP8UIeotzTEXa_iFlNG4yT6pjS6YydNGfdL4peYcdOf6L4A9JYAq_-UWJGGtJdXvAvcYBzjQ" />
+            </div>
+        </div>
+        <!-- Photo 9: Top Right-Center -->
+        <div class="floating-photo absolute right-[35%] top-[6%] rotate-[3deg] animate-float-mid pointer-events-auto z-[9]"
+            style="animation-delay: -7.5s;">
+            <div class="bg-white p-3 pb-8 shadow-md border border-white/30 w-[190px]">
+                <img alt="Memory 9" class="w-full h-[150px] object-cover bg-slate-100"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfAbHdp-V7PjCFsASgld09jo2ol0pEaDMaP33MjaaBbB7aH16PWKOEX6XZQA1DWvnsbmh3dgWdAsn57nDlY9nM-JTYltf6o5nTczlXF9CsmcH906mrzcST5dqyxuaOuEabKAYWj9Jj8YcRkwsM73B6GzmlCBl5YBbguWiH6RDtAIrkUUWr_wfJfkXlGl7QgbT-Y4FoXCyliEVJWfAhZ9u3FG8S73qtNDwgWkOu2vGB9CpG1QAiYwXB5g4wCH74z7raEdVi2Kx-qss" />
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Area -->
+    <main class="relative z-20 min-h-screen flex flex-col items-center justify-center px-6 py-20">
+        <!-- Header Branding -->
+        <div class="mb-12 text-center">
+            <h1 class="font-headline text-4xl md:text-6xl font-extrabold text-primary tracking-tighter mb-4">Kobox</h1>
+            <p class="font-label text-on-surface-variant tracking-[0.3em] text-xs uppercase">Your Private Anime
+                Sanctuary</p>
+        </div>
+        <!-- Login Card -->
+        <div
+            class="glass-panel w-full max-w-md rounded-xl p-8 md:p-12 shadow-[0_40px_60px_-15px_rgba(48,46,44,0.06)] border border-white/40">
+            <div class="mb-10 text-center md:text-left">
+                <h2 class="font-headline text-2xl font-bold text-on-surface mb-2">欢迎回到小匣子</h2>
+                <p class="text-on-surface-variant text-sm">开启你的梦幻追番之旅</p>
+            </div>
+            <form class="space-y-8">
+                <!-- Username -->
+                <div class="relative group">
+                    <label
+                        class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1 mb-2 block">账号
+                        ID / 邮箱</label>
+                    <input
+                        class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/50 text-on-surface"
+                        placeholder="请输入您的账号" type="text" />
+                    <div
+                        class="absolute bottom-0 left-0 h-[1.5px] w-0 bg-primary transition-all duration-500 group-focus-within:w-full">
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="relative group">
+                    <label
+                        class="font-label text-[10px] uppercase tracking-widest text-on-surface-variant ml-1 mb-2 block">私密密钥
+                        / 密码</label>
+                    <input
+                        class="w-full bg-transparent border-0 border-b border-outline-variant/30 py-3 px-1 focus:ring-0 focus:border-primary transition-all placeholder:text-outline-variant/50 text-on-surface"
+                        placeholder="••••••••" type="password" />
+                    <div
+                        class="absolute bottom-0 left-0 h-[1.5px] w-0 bg-primary transition-all duration-500 group-focus-within:w-full">
+                    </div>
+                </div>
+                <!-- Actions -->
+                <div class="pt-4 flex flex-col gap-4">
+                    <button
+                        class="w-full bg-primary-container text-on-primary-container font-headline font-bold py-4 rounded-full hover:scale-[1.02] active:scale-95 transition-all shadow-sm hover:shadow-primary/20"
+                        type="submit">
+                        进入我的空间
+                    </button>
+                    <div class="flex items-center justify-between text-xs text-on-surface-variant px-2">
+                        <a class="hover:text-primary transition-colors" href="#">忘记密码？</a>
+                        <div class="flex items-center gap-1">
+                            <span>初次光临？</span>
+                            <a class="text-primary font-bold hover:underline underline-offset-4 decoration-primary-fixed"
+                                href="#">立即入驻</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Stickers -->
+        <div class="absolute left-[3%] top-[30%] opacity-40 select-none hidden lg:block">
+            <div
+                class="bg-secondary-container/30 px-3 py-1 rounded-full border border-secondary-container flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs text-secondary">auto_awesome</span>
+                <span class="font-label text-[10px] text-secondary font-bold tracking-tight">DREAMER</span>
+            </div>
+        </div>
+        <div class="absolute right-[5%] bottom-[20%] opacity-40 select-none hidden lg:block rotate-12">
+            <div
+                class="bg-primary-container/30 px-3 py-1 rounded-full border border-primary-container flex items-center gap-1">
+                <span class="material-symbols-outlined text-xs text-primary"
+                    style="font-variation-settings: 'FILL' 1;">favorite</span>
+                <span class="font-label text-[10px] text-primary font-bold tracking-tight">COLLECTOR</span>
+            </div>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="relative z-20 w-full py-12 flex flex-col items-center gap-4 mt-auto px-6 text-center">
+        <div class="flex flex-wrap justify-center gap-6 mb-2">
+            <a class="font-headline text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 hover:text-primary transition-colors"
+                href="#">语言: 简体中文</a>
+            <a class="font-headline text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 hover:text-primary transition-colors"
+                href="#">服务协议</a>
+            <a class="font-headline text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/60 hover:text-primary transition-colors"
+                href="#">隐私政策</a>
+        </div>
+        <p class="font-headline text-[10px] uppercase tracking-[0.2em] text-primary opacity-60">© 2024 Kobox 小匣子.
+            Floating Memories on Water.</p>
+    </footer>
+</body>
+
+</html>
